@@ -1,4 +1,4 @@
 module.exports = {
-    todos: [{ task: "finish project", completed: true }, { task: "do reading", completed: true }],
+    todos: [{ task: "finish project", completed: false }, { task: "do reading", completed: false }],
     markoff: []
 }

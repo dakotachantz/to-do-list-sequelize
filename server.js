@@ -17,21 +17,21 @@ app.get("/", (req, res) => {
     res.render("todo", { todos: data.todos, markoff: data.markoff });
 });
 
-app.post("/todo", (req, res) => {
-    let newToDo = req.body;
-    newToDo.completed = true;
-    data.todos.push(newToDo);
-    console.log('creating new object with: ', req.body);
-    console.log('todos: ', data.todos);
+app.post("/complete/:task", (req, res) => {
+    let task = req.params.task;
+    let index = data.todos.findIndex(function (item) { return item.task === task });
+    let targetTodo = data.todos[index];
+    targetTodo.completed = !targetTodo.completed;
+    data.markoff.push(targetTodo);
+    data.todos.splice(index, 1);
+    console.log('todos: ', data.todos, data.markoff);
     return res.redirect("/");
 });
 
-app.post("/complete", (req, res) => {
-    let completeToDo = req.body;
-    completeToDo.markoff = true;
-    data.markoff.push(completeToDo);
-    console.log('what to add to markoff array: ', req.body);
-    console.log('markoff: ', data.markoff);
+app.post("/todo", (req, res) => {
+    let newTodo = req.body;
+    newTodo.completed = false;
+    data.todos.push(newTodo);
     return res.redirect("/");
 });
 

@@ -13,13 +13,14 @@
         <input type="text" name="task" placeholder="Add a todo...">
         <button type="submit" placeholder="Add todo">Add to do</button>
     </form>
+    <br>
     <section class="todos">
-        {{#todos}} {{#completed}}
-        <form action="/complete" method="post">
-            <button class="complete" type="submit" name="task" value="{{task}}">Mark Complete</button> {{task}}
+        {{#todos}} 
+        <form action="/complete/{{task}}" method="post">
+            <button class="complete" type="checkbox" name="task" value="{{task}}">Mark as Complete</button> <span> {{task}}</span>
         </form>
-        {{/completed}}{{^completed}}
-        <p>does this work?</p>{{/completed}}{{/todos}}
+        <br>
+        {{/todos}}
     </section>
 
     <section class="completed">
