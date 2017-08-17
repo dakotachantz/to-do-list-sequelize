@@ -10,17 +10,16 @@
 
 <body>
     <form action="/todo" method="post">
-        <label for="todo">To Do</label>
         <input type="text" name="task" placeholder="Add a todo...">
         <button type="submit" placeholder="Add todo">Add to do</button>
     </form>
     <section class="todos">
-        <h2>Let's get down to business</h2>
-        {{#todos}}
+        {{#todos}} {{#completed}}
         <form action="/complete" method="post">
-            <button type="submit" name="task" value="{{task}}">Mark Complete</button> {{task}}
+            <button class="complete" type="submit" name="task" value="{{task}}">Mark Complete</button> {{task}}
         </form>
-        {{/todos}}
+        {{/completed}}{{^completed}}
+        <p>does this work?</p>{{/completed}}{{/todos}}
     </section>
 
     <section class="completed">
