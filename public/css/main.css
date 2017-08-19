@@ -33,7 +33,7 @@ main {
 
 button {
     background-color: #009ED8;
-    border: 2px solid #007FAD;
+    border: 2px solid #009ED8;
     outline: none;
     color: white;
     align-self: flex-start;
@@ -42,10 +42,18 @@ button {
     font-family: 'Josefin Sans', sans-serif;
     padding: .4em;
     border-radius: 10px;
+    /* new stuff */
+    /*  */
+    /*  */
+    transition: all 0.75s ease 0s;
+    position: relative;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
     background-color: #007FAD;
+    /*  */
+    transform: scale(1.1);
 }
 
 section {
@@ -86,6 +94,11 @@ section {
     font-size: 1.2em;
     height: 2.5em;
     flex: 1;
+    transition: all 0.75s ease 0s;
+}
+
+#add button:hover {
+    transform: scale(1.1);
 }
 
 header h3 {
