@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    background-color: #303036;
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("./../img/background.png");
+    background-size: cover;
+}
+
+h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    line-height: 46px;
+    font-size: 46px;
+    margin: 0 0 23px 0;
+}
+
+main {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    height: 100%;
+    width: 90%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+button {
+    background-color: #009ED8;
+    border: 2px solid #007FAD;
+    outline: none;
+    color: white;
+    align-self: flex-start;
+    width: 8em;
+    font-size: .8em;
+    font-family: 'Josefin Sans', sans-serif;
+    padding: .4em;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #007FAD;
+}
+
+section {
+    height: 40vh;
+    width: 80vh;
+    margin: 0 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    width: 100%;
+    height: 10vh;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add input {
+    font-size: 2em;
+    height: 1.5em;
+    margin: 0 .5em 0 0;
+    border-radius: 10px;
+    text-align: center;
+    transition: .7s;
+    width: 17em;
+    flex: 3;
+}
+
+#add input:focus {
+    width: 20em;
+    flex: 5;
+}
+
+#add button {
+    font-size: 1.2em;
+    height: 2.5em;
+    flex: 1;
+}
+
+header h3 {
+    margin: .5em;
+    font-size: 5em;
+    color: white;
+    text-align: center;
+}
+
+form h3 {
+    margin: 1em auto 0 auto;
+}
+
+.todos form {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.todos button {
+    margin: 0 1em 0em 0em;
+}
+
+.completed p {
+    text-align: left;
+    font-size: 1.4em;
+    margin: 0 0 .6em 0;
+}
+
+li {
+    font-size: 1.4em;
+}
+
+#add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

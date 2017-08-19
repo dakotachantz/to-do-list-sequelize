@@ -6,31 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To Do List</title>
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Sans:700|Amatic+SC:700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
-    <form action="/todo" method="post">
-        <input type="text" name="task" placeholder="Add a todo...">
-        <button type="submit" placeholder="Add todo">Add to do</button>
-    </form>
-    <br>
-    <section class="todos">
-        {{#todos}} 
-        <form action="/complete/{{task}}" method="post">
-            <button class="complete" type="checkbox" name="task" value="{{task}}">Mark as Complete</button> <span> {{task}}</span>
+    <header>
+        <h3>To Do List</h3>
+    </header>
+    <section class="form">
+        <form id="add" action="/todo" method="post">
+            <input type="text" name="task" placeholder="Add a todo...">
+            <button type="submit" placeholder="Add todo">Add</button>
         </form>
+    </section>
+    <main>
         <br>
-        {{/todos}}
-    </section>
+        <section class="todos">
+            <h3>Not Completed Tasks</h3>
+            {{#todos}}
+            <form class="todos-form" action="/complete/{{task}}" method="post">
+                <button class="complete" type="checkbox" name="task" value="{{task}}">Complete</button>
+                <li>{{task}}</li>
+            </form>
+            <br> {{/todos}}
+        </section>
 
-    <section class="completed">
-        <h1>Completed</h1>
-        {{#markoff}}
-        <p style="text-decoration: line-through">
-            {{task}}
-        </p>
-        {{/markoff}}
-    </section>
+        <section class="completed">
+            <h3>Completed Tasks</h3>
+            {{#markoff}}
+            <p style="text-decoration: line-through">
+                {{task}}
+            </p>
+            {{/markoff}}
+        </section>
+    </main>
 </body>
 
 </html>
