@@ -6,4 +6,4 @@ Use Express to build a todo list application. In order to keep the list of todos
 
 You should be able to add new todos and mark todos as complete. Your application might look like this mockup.
 
-![The mockup:](https://github.com/dakotachantz/todo-list/blob/master/mockup/mockup.png)
+![The mockup:](https://github.com/dakotachantz/to-do-list/blob/master/mockup/mockup.png)
