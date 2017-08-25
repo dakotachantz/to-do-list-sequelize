@@ -4,7 +4,7 @@ const mustacheExpress = require("mustache-express");
 const bodyParser = require("body-parser");
 const expressValidator = require("express-validator");
 const path = require("path");
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8888;
 const app = express();
 
 app.engine("mustache", mustacheExpress());
@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
     res.render("todo", { todos: data.todos, markoff: data.markoff });
 });
+app.get("/jj", (req, res) => {
+    res.render("jj");
+})
 
 app.post("/complete/:task", (req, res) => {
     let task = req.params.task;
