@@ -17,9 +17,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
     res.render("todo", { todos: data.todos, markoff: data.markoff });
 });
-app.get("/jj", (req, res) => {
-    res.render("jj");
-})
 
 app.post("/complete/:task", (req, res) => {
     let task = req.params.task;
@@ -28,7 +25,6 @@ app.post("/complete/:task", (req, res) => {
     targetTodo.completed = !targetTodo.completed;
     data.markoff.push(targetTodo);
     data.todos.splice(index, 1);
-    console.log('todos: ', data.todos, data.markoff);
     return res.redirect("/");
 });
 
