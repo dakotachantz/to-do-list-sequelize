@@ -1,9 +1,9 @@
 const express = require("express");
-const data = require("./data");
 const mustacheExpress = require("mustache-express");
 const bodyParser = require("body-parser");
 const expressValidator = require("express-validator");
 const path = require("path");
+const models = require("./models");
 const port = process.env.PORT || 8888;
 const app = express();
 
@@ -14,8 +14,21 @@ app.set("view engine", "mustache");
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+// models.Todos.findOne()
+//     .then(function (todo) {
+//         console.log(todo.task);
+//     })
+
+
 app.get("/", (req, res) => {
-    res.render("todo", { todos: data.todos, markoff: data.markoff });
+    let todos;
+    models.Todos.findAll().then(function (foundTodos) {
+        // console.log("found stuff: ", foundTodos);
+        todos = foundTodos;
+        // console.log("todos list: ", todos);
+        return res.render("todo", { todos: todos });
+    });
 });
 
 app.post("/complete/:task", (req, res) => {
@@ -29,9 +42,20 @@ app.post("/complete/:task", (req, res) => {
 });
 
 app.post("/todo", (req, res) => {
-    let newTodo = req.body;
-    newTodo.completed = false;
-    data.todos.push(newTodo);
+
+    const todo = models.Todos.build({
+        task: req.body.task,
+        completed: false
+    });
+
+    todo.save()
+        .then(function (newToDo) {
+            res.send(newToDo);
+        });
+
+    // let newTodo = req.body;
+    // newTodo.completed = false;
+    // data.todos.push(newTodo);
     return res.redirect("/");
 });
 
