@@ -18,30 +18,68 @@
     <section class="form">
         <form id="add" action="/todo" method="post">
             <input autocomplete="off" type="text" name="task" placeholder="Add a todo..." required>
-            <button type="submit" placeholder="Add todo">Add</button>
+            <button class="button" type="submit" placeholder="Add todo">Add</button>
         </form>
     </section>
     <main>
         <br>
         <section class="todos">
             <h3>Not Completed Tasks</h3>
-            {{#todos}}
-            <form class="todos-form" action="/complete/{{task}}" method="post">
-                <button class="complete" type="checkbox" name="task" value="{{task}}">Complete</button>
-                <li>{{task}}</li>
+            {{#todos}} {{^completed}}
+
+            <form class="todos-form" action="/edit/{{id}}" method="post">
+                <button class="edit-button button" type="submit" style="display:none;" id="editSubmit_{{id}}" name="task">Done Editing</button>
+                <button onclick="showInput()" data-id="{{id}}" data-task="{{task}}" class="button fa fa-pencil" name="task"></button>
+                <button id="complete_{{id}}" style="display: block;" class="button fa fa-check" formaction="/complete/{{id}}" type="submit"
+                    name="task" value="{{task}}"></button>
+                <button id="delete_{{id}}" style="display: block;" class="button fa fa-times" formaction="/delete/{{id}}" type="submit" name="task"
+                    value="{{task}}"></button>
+                <input id="input_{{id}}" class="edit-input" type="text" name="task" value="{{task}}" autocomplete="off" minlength="1">
+                <li id="display_{{id}}" style="display: block;">{{task}}</li>
             </form>
-            <br> {{/todos}}
+            {{/completed}}{{/todos}}
         </section>
 
         <section class="completed">
             <h3>Completed Tasks</h3>
-            {{#markoff}}
+            <form class="todos-form" action="/deleteallcompleted" method="post">
+                <button class="button deleteall" type="submit" name="task">Delete All</button>
+            </form>
+            {{#todos}} {{#completed}}
             <p style="text-decoration: line-through">
                 {{task}}
             </p>
-            {{/markoff}}
+            {{/completed}} {{/todos}}
         </section>
     </main>
+    <script type="text/javascript">
+        function showInput() {
+            event.preventDefault();
+            let elem = event.target;;
+            let elemID = elem.getAttribute('data-id');
+            let elemTask = elem.getAttribute('data-task');
+            let input = document.getElementById("input_" + elemID);
+            let display = document.getElementById("display_" + elemID);
+            let editSubmitButton = document.getElementById("editSubmit_" + elemID);
+            let completeButton = document.getElementById("complete_" + elemID);
+            let deleteButton = document.getElementById("delete_" + elemID);
+
+            if (display.style.display == 'block') {
+                elem.style.display = "none";
+                editSubmitButton.style.display = "block";
+                input.style.display = 'block';
+                display.style.display = 'none';
+                completeButton.style.display = 'none';
+                deleteButton.style.display = 'none';
+            } else {
+                elem.style.display = "block";
+                editSubmitButton.style.display = "none";
+                input.style.display = 'none';
+                display.style.display = 'block';
+            }
+        }
+    </script>
+    <script src="https://use.fontawesome.com/27763c6ae2.js"></script>
 </body>
 
 </html>

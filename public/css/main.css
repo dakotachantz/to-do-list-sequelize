@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    list-style: none;
 }
 
 body {
@@ -8,6 +9,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-image: url("./../img/background.png");
     background-size: cover;
+    height: 100%;
+    min-width: 420px;
 }
 
 h3 {
@@ -29,50 +32,49 @@ main {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-button {
+.button {
     background-color: #009ED8;
     border: 2px solid #009ED8;
     outline: none;
     color: white;
     align-self: flex-start;
-    width: 10em;
     font-size: .8em;
     font-family: 'Josefin Sans', sans-serif;
-    padding: .4em;
+    padding: .2em;
     border-radius: 10px;
     transition: all 0.75s ease 0s;
-    position: relative;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
-    width: 5em;
+    width: 2em;
     cursor: pointer;
+    margin: 0 .2em 0 0;
 }
 
-button:hover {
+.button:hover {
     background-color: #007FAD;
     transform: scale(1.1);
 }
 
 section {
-    height: 40vh;
+    height: 40%;
     margin: 0 1em;
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    width: 80%;
 }
 
 .form {
-    width: 100%;
-    height: 10vh;
+    width: 90%;
+    height: 5em;
     color: white;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
+    margin: 10px;
 }
 
 #add input {
@@ -88,6 +90,7 @@ section {
 
 #add input:focus {
     width: 20em;
+    width: 9em;
     flex: 5;
 }
 
@@ -95,6 +98,7 @@ section {
     font-size: 1.2em;
     height: 2.5em;
     flex: 1;
+    width: 4em;
     transition: all 0.75s ease 0s;
 }
 
@@ -118,11 +122,7 @@ form h3 {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 1em;
-}
-
-.todos button {
-    margin: 0 1em 0em 0em;
+    margin: .2em;
 }
 
 .completed p {
@@ -133,14 +133,41 @@ form h3 {
 
 li {
     font-size: 1em;
-    margin: .3em 0em;
-    /* justify-content: center; */
+    margin: .3em 1em;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.0);
 }
 
 #add {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.edit-input {
+    display: none;
+    margin: 0;
+    font-size: 1em;
+    height: 1.5em;
+    border-radius: 10px;
+    text-align: center;
+    width: 13em;
+    height: 2.4em;
+}
+
+.edit-form {
+    height: 2em;
+}
+
+.edit-button {
+    width: 10em;
+    height: 3em;
+}
+
+.deleteall {
+    width: 15em;
+    height: 2em;
+    margin-bottom: 1em;
 }
 
 @media(min-width: 600px) {
@@ -150,14 +177,20 @@ li {
     h3 {
         font-size: 35px;
     }
-    button {
-        width: 6em;
-    }
     li {
         font-size: 1.2em;
+        margin: .2em .5em;
     }
     .completed p {
         font-size: 1.2em;
+    }
+    .edit-button {
+        width: 10em;
+        height: 2em;
+    }
+    .edit-input {
+        height: 1.6em;
+        margin-left: .2em;
     }
 }
 
@@ -176,6 +209,7 @@ li {
     }
     li {
         font-size: 1.3em;
+        margin: .1em .5em;
     }
     h3 {
         font-size: 35px;
@@ -184,10 +218,11 @@ li {
         width: 17em;
     }
     section {
-        width: 90vw;
+        width: 90%;
     }
-    button {
-        width: 7em;
+    #add input:focus {
+        width: 20em;
+        flex: 5;
     }
 }
 
@@ -195,13 +230,20 @@ li {
     h3 {
         font-size: 46px;
     }
-    button {
-        width: 8em;
+    .button {
+        width: 2em;
     }
     .completed p {
         font-size: 1.4em;
     }
     li {
         font-size: 1.4em;
+    }
+    .edit-button {
+        width: 10em;
+        height: 2em;
+    }
+    .deleteall {
+        width: 15em;
     }
 }
